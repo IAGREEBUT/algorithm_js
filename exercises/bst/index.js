@@ -20,7 +20,7 @@ class Node {
         this.data = data
         this.right = null
         this.left = null
-        }
+    }
 
     insert(data) {
         if(this.data > data && this.left){
@@ -31,6 +31,19 @@ class Node {
             this.right.insert(data);
         }else if(this.data < data){
             this.right = new Node(data);
+        }
+    }
+
+    contains(data) {
+        if(this.data === data) return this
+
+        if(data > this.data && this.right){
+            return this.right.contains(data);
+        } else if(data < this.data && this.left){
+            return this.left.contains(data);
+        }
+        
+        return null;
     }
 }
 
